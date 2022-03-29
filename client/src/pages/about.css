@@ -1,0 +1,19 @@
+#about1{
+    background: black;
+    height: 150px;
+    color: white;
+    
+}
+
+#about1 h1{
+    text-align: center;
+    margin-top: 50px;
+}
+
+#about1,#about2,#about3{
+    text-align: center;
+}
+
+.st1{
+    margin-top: 40px;
+}
