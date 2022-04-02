@@ -60,10 +60,10 @@ app.put("/strategy/:id", async (req, res) => {
 })
 
 
-//-------------------------------Strategy API End-----------------------------------------//
+// //-------------------------------Strategy API End-----------------------------------------//
 
 
-//-------------------------------Mission API Start-----------------------------------------//
+// //-------------------------------Mission API Start-----------------------------------------//
 
 //get all mission
 app.get("/mission", async (req, res) => {
@@ -112,10 +112,10 @@ app.put("/mission/:id", async (req, res) => {
     }
 })
 
-//-------------------------------Mission API End-----------------------------------------//
+// //-------------------------------Mission API End-----------------------------------------//
 
 
-//-------------------------------Vision API Start-----------------------------------------//
+// //-------------------------------Vision API Start-----------------------------------------//
 
 //get all Vision
 app.get("/vision", async (req, res) => {
@@ -146,7 +146,7 @@ app.get("/vision/:id", async (req, res) => {
 
 })
 
-//update a mission
+//update a Vision
 app.put("/vision/:id", async (req, res) => {
     try {
         const {id} = req.params;
@@ -164,10 +164,10 @@ app.put("/vision/:id", async (req, res) => {
     }
 })
 
-//-------------------------------Vision API End-----------------------------------------//
+// //-------------------------------Vision API End-----------------------------------------//
 
 
-//-------------------------------Strategy List API Start-----------------------------------------//
+// //-------------------------------Strategy List API Start-----------------------------------------//
 // create StrategyList
 app.post("/strategyList", async (req, res) => {
 
@@ -187,12 +187,13 @@ app.post("/strategyList", async (req, res) => {
 
 })
 
+
 //get all StrategyList
 app.get("/strategyList", async (req, res) => {
 
     try {
         const allStrategyList = await pool.query(
-            "SELECT *  FROM strategyList"
+            "SELECT * FROM strategyList"
         );
         res.json(allStrategyList.rows);
     } catch (err) {
@@ -201,7 +202,8 @@ app.get("/strategyList", async (req, res) => {
 
 });
 
-//get all StrategyList id and name
+
+//get all StrategyList''s id and name
 app.get("/strategyList/name", async (req, res) => {
 
     try {
@@ -269,9 +271,7 @@ app.delete("/strategyList/:id", async (req, res) => {
 
 //-------------------------------kanbanCard API-----------------------------------------//
 
-
-
-//get all StrategyList
+//get all kanbanCards by the name
 app.get("/kanbanCard/strategicTheme/:name", async (req, res) => {
 
     try {
@@ -288,7 +288,7 @@ app.get("/kanbanCard/strategicTheme/:name", async (req, res) => {
 
 });
 
-//get all StrategyList
+//get all kanbanCards by the name and qt
 app.get("/kanbanCard/strategicTheme/:name/:qt", async (req, res) => {
 
     try {
@@ -305,7 +305,7 @@ app.get("/kanbanCard/strategicTheme/:name/:qt", async (req, res) => {
 
 });
 
-//delete all StrategyList
+//delete a kanbanCards
 app.delete("/kanbanCard/:id", async (req, res) => {
     try {
 
@@ -323,17 +323,17 @@ app.delete("/kanbanCard/:id", async (req, res) => {
 });
 
 
-//get all StrategyList
+//get a kanbanCards
 app.get("/kanbanCard/:id", async (req, res) => {
 
     try {
 
         const {id} = req.params;
 
-        const allStrategyList = await pool.query(
+        const kanbanCard = await pool.query(
             "SELECT *  FROM kanbanCard k where strategyListID = $1", [id]
         );
-        res.json(allStrategyList.rows);
+        res.json(kanbanCard.rows);
     } catch (err) {
         console.log(err.message);
     }
@@ -341,7 +341,7 @@ app.get("/kanbanCard/:id", async (req, res) => {
 });
 
 
-// create StrategyList
+// create kanbanCard
 app.post("/kanbanCard", async (req, res) => {
 
     try {
@@ -361,12 +361,27 @@ app.post("/kanbanCard", async (req, res) => {
 })
 
 
+// create kanbanCard
+app.put("/kanbanCard/:id", async (req, res) => {
 
+    try {
 
+        const {id} = req.params;
+        const {title,priority,due,use,description,qt,strategyList_id,statuskc} = req.body;
 
+        const editKanbanCard = await pool.query(
+            "UPDATE kanbanCard SET title = $1,priority = $2,due = $3,use = $4,description = $5,qt = $6,strategyListID = $7,statuskc = $8,  WHERE kanbanCard_id = $9",
+            [title,priority,due,use,description,qt,strategyList_id,statuskc,id]
+        );
 
+        res.json("Card updated");
+    } catch (err) {
+        console.log(err.message);
+    }
 
-//-------------------------------kanbanCard API-----------------------------------------//
+})
+
+//-------------------------------kanbanCard API End-----------------------------------------//
 
 
 app.get('/', async (req, res) => {

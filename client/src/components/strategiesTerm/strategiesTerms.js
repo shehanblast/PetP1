@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 
 //components
 import AddStrategicTerm from './addStrategicTerms';
+import EditStrategicTerm from './editStrategicTerms';
 
 const StrategiesTerms = () =>{
 
@@ -26,19 +27,27 @@ const StrategiesTerms = () =>{
         }
     }
 
-    const deleteStrategicTerms = async () => {
-        try{
+    const deleteStrategicTerms = async (id) => {
 
-            const response = await fetch('http://localhost:5000/strategyList');
-            const jsonData = await response.json();
+        console.log(id);
 
-            setStrategicTerms(jsonData);
-            console.log(jsonData);
+        try {
 
-        }catch(err){
+            const deleteTo = await fetch(`http://localhost:5000/strategyList/${id}`,
+                {
+                    method: "DELETE"
+                });
+
+            console.log(deleteTo);
+
+            window.location = '/';
+
+
+        } catch (err) {
             console.log(err.message);
         }
     }
+
 
     const naviagateNewST = () => {
         window.location = `/strageticTerm`
@@ -64,12 +73,13 @@ const StrategiesTerms = () =>{
                                                      {setDate(st.enddate)}  <br/>
                                                      {st.status} </p>
                             <a href="#" className="btn btn-primary">Edit</a>&nbsp;
-                            <button onClick={deleteStrategicTerms()} className="btn btn-danger">Delete</button>
+                            {/* <EditStrategicTerm mis={est}/> */}
+                            <button onClick={() => deleteStrategicTerms(st.strategylist_id)} className="btn btn-danger">Delete</button>
                         </div>
                 </div>
             ))}
             <br/>
-            <button className='btn btn-success' onClick={() => naviagateNewST()}>Add new</button>
+            <button className='btn btn-success' onClick={() => naviagateNewST()}>Add new</button><br/>
         </div>
     )
 

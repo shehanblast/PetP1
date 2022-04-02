@@ -35,13 +35,13 @@ const MissionComponent = () => {
 
     return(
         <div>
+
             <h2>Mission</h2>
                 {mission.map(missionn => (
-                    <div>
-                        <h5 key={missionn.mission_id}>{missionn.description}</h5>
-                        {/*<h6>{missionn.startdate}</h6>*/}
+                    <div key={missionn.mission_id}>
+                        <h5>{missionn.description}</h5>
                         <h6>{setDate(missionn.enddate)}</h6>
-                        <EditMission mis={missionn}/>
+                        <EditMission Editmission={missionn}/>
                     </div>
                 ))}
         </div>

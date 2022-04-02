@@ -30,21 +30,21 @@ const About = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">
-                            <div className="card">
+                            <div className="card aboutCard">
                                 <div className="card-body">
                                     <VisionComponent/>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4">
-                            <div className="card">
+                        <div className="col-md-4 ">
+                            <div className="card aboutCard">
                                 <div className="card-body">
                                     <MissionComponent/>
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <div className="card">
+                            <div className="card aboutCard">
                                 <div className="card-body">
                                     <StrategiesComponent/>
                                 </div>

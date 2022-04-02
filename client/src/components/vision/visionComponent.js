@@ -37,9 +37,8 @@ const VisionComponent = () => {
         <div>
             <h2>Vision</h2>
             {vision.map(visionn => (
-                    <div>
-                        <h5 key={visionn.mission_id}>{visionn.description}</h5>
-                        {/*<h6>{setDate(visionn.startdate)}</h6>*/}
+                    <div key={visionn.mission_id}>
+                        <h5>{visionn.description}</h5>
                         <h6>{setDate(visionn.enddate)}</h6>
                         <EditVision vis={visionn}/>
                     </div>

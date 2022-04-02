@@ -4,6 +4,7 @@ import Navbar from "../../../components/navigation/navbar";
 
 const AddStrategicCard = () => {
 
+    //submission status alerts
     const SubmissionAlert = () => {
         swat.fire({
             position: 'center',
@@ -14,6 +15,7 @@ const AddStrategicCard = () => {
         });
     }
 
+    //submission status alerts
     const SubmissionFail = () => {
         swat.fire({
             icon: 'error',
@@ -33,10 +35,10 @@ const AddStrategicCard = () => {
     const [themes,setThemes] = useState([]);
 
     useEffect(() => {
-        getStrategicThemes();
         onSubmit();
     }, []);
 
+    //fetch stategic themes from the get request and load them into theme
     const getStrategicThemes = async () => {
         try{
 
@@ -48,19 +50,17 @@ const AddStrategicCard = () => {
 
             setThemes(jsonData);
 
-            // const options = [
-            //     themes.map(stcc => {
-            //         theme = {
-            //             value: stcc.strategylist_id,
-            //             label: stcc.name
-            //         }
-            //         data.push(theme);
-            //     })
-            // ]
+            const options = [
+                themes.map(stcc => {
+                    theme = {
+                        value: stcc.strategylist_id,
+                        label: stcc.name
+                    }
+                    data.push(theme);
+                })
+            ]
 
             console.log(themes);
-
-
 
 
         }catch(err){
@@ -98,13 +98,16 @@ const AddStrategicCard = () => {
 
             SubmissionAlert();
 
-            window.location = `/about`
+            window.location = `/kanbanBoard`
 
 
         }catch(err){
             console.log(err.message);
             SubmissionFail();
         }
+
+        SubmissionAlert();
+
     }
 
     return(
@@ -161,11 +164,9 @@ const AddStrategicCard = () => {
                                 />
                             </div>
                         </div>
-
                     </div>
 
                     <div className="row">
-
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label className="form-label">Status</label> <br/>
@@ -184,6 +185,7 @@ const AddStrategicCard = () => {
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
+                                    <option value="4">4</option>
                                 </select>
                             </div>
                         </div>
@@ -199,29 +201,30 @@ const AddStrategicCard = () => {
                             </div>
                         </div>
 
-                        <div className="col-md-6">
+                        {/* <div className="col-md-6">
                             <div className="mb-3">
-                                <label className="form-label">Priority</label> <br/>
+                                <label className="form-label">Strategic Theme</label> <br/>
                                 <select id="cars" name="cars" onChange={e => setStrategyListId(e.target.value)}>
-                                    <option value="4">Grow</option>
-                                    <option value="5">Soft skills</option>
-                                    <option value="6">Leadership</option>
+                                    <option value="1">GPA</option>
+                                    <option value="2">Soft skills</option>
+                                    <option value="3">Leadership</option>
+                                    <option value="4">test theme</option>
                                 </select>
                             </div>
+                        </div> */}
+
+                        <div className="col-md-6">
+                           <div className="mb-3">
+                               <label className="form-label">Strategic Theme</label> 
+                               <br/>
+                               <select
+                                    options={themes}
+                                    className="basic-multi-select"
+                                    onChange={e => setStrategyListId(e.target.value)}
+                                />
+                            </div>
                         </div>
-
-                        {/*<div className="col-md-6">*/}
-                        {/*    <div className="mb-3">*/}
-                        {/*        <label className="form-label">Strategic Theme</label> <br/>*/}
-                        {/*        <select*/}
-                        {/*            options={themes}*/}
-                        {/*            className="basic-multi-select"*/}
-                        {/*        />*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-
                     </div>
-
 
                     <button type="submit" className="btn btn-primary" onClick={e => onSubmit(e)}>Add</button>
                 </form>

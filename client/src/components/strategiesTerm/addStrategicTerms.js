@@ -3,6 +3,7 @@ import swat from "sweetalert2";
 
 const AddStrategicTerm = () => {
 
+    //submission status alerts
     const SubmissionAlert = () => {
         swat.fire({
             position: 'center',
@@ -13,6 +14,7 @@ const AddStrategicTerm = () => {
         });
     }
     
+    //submission status alerts
     const SubmissionFail = () => {
         swat.fire({
             icon: 'error',
@@ -70,7 +72,7 @@ const AddStrategicTerm = () => {
     return(
         <div>
             <div className="container st1">
-                <h1>Create Strategic Term</h1>
+                <h1>Create Strategic Theme</h1>
 
                 <form>
                     <div className="mb-3">
@@ -89,7 +91,6 @@ const AddStrategicTerm = () => {
                             className="form-control"
                             value={description}
                             onChange={e => setDescription(e.target.value) }
-
                         />
                     </div>
                     <div className="mb-3">
@@ -99,7 +100,6 @@ const AddStrategicTerm = () => {
                             className="form-control"
                             value={startDate}
                             onChange={e => setStartDate(e.target.value) }
-
                         />
                     </div>
                     <div className="mb-3">
@@ -109,7 +109,6 @@ const AddStrategicTerm = () => {
                             className="form-control"
                             value={endDate}
                             onChange={e => setEndDate(e.target.value) }
-
                         />
                     </div>
                     <div className="mb-3">
@@ -126,7 +125,6 @@ const AddStrategicTerm = () => {
             </div>
             <br/>
         </div>
-
     )
 
 }

@@ -106,3 +106,11 @@ input[type=text] ,input[type=date] {
 .st1 h1{
     text-align: center;
 }
+
+.card{
+    text-align: center;
+}
+
+.aboutCard{
+    background-color: #e7bd96
+}
