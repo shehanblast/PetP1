@@ -37,13 +37,13 @@ const MissionComponent = () => {
         <div>
 
             <h2>Mission</h2>
-                {mission.map(missionn => (
-                    <div key={missionn.mission_id}>
-                        <h5>{missionn.description}</h5>
-                        <h6>{setDate(missionn.enddate)}</h6>
-                        <EditMission Editmission={missionn}/>
-                    </div>
-                ))}
+            {mission.map((missionn,index) => (
+                <div key={index}>
+                    <h5>{missionn.description}</h5>
+                    <h6>{setDate(missionn.enddate)}</h6>
+                    <EditMission Editmission={missionn}/>
+                </div>
+            ))}
         </div>
     );
 

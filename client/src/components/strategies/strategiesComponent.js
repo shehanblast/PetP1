@@ -39,13 +39,13 @@ const StrategiesComponent = () => {
     return(
         <div>
             <h2>Strategies</h2>
-                {startegy.map(startegies => (
-                    <div key={startegies.strategy_id}>
-                        <h5>{startegies.description}</h5>
-                        <h6>{setDate(startegies.enddates)}</h6>
-                        <EditStrategy sta={startegies}/>
-                    </div>
-                ))}
+            {startegy.map((startegies,index) => (
+                <div key={index}>
+                    <h5>{startegies.description}</h5>
+                    <h6>{setDate(startegies.enddates)}</h6>
+                    <EditStrategy sta={startegies}/>
+                </div>
+            ))}
         </div>
     );
 

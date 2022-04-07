@@ -60,22 +60,22 @@ const StrategiesTerms = () =>{
         console.log(date_str);
         return  date_str;
     }
- 
+
     return(
         <div>
             <h2>Strategic Themes</h2>
             {strategicTerms.map(st => (
                 <div className="card s1">
-                        <div className="card-body">
-                            <h5 className="card-title">{st.name}</h5>
-                            <p className="card-text">{st.description} <br/>
-                                                     {setDate(st.startdate)} <br/>
-                                                     {setDate(st.enddate)}  <br/>
-                                                     {st.status} </p>
-                            <a href="#" className="btn btn-primary">Edit</a>&nbsp;
-                            {/* <EditStrategicTerm mis={est}/> */}
-                            <button onClick={() => deleteStrategicTerms(st.strategylist_id)} className="btn btn-danger">Delete</button>
-                        </div>
+                    <div className="card-body">
+                        <h5 className="card-title">{st.name}</h5>
+                        <p className="card-text">{st.description} <br/>
+                            {setDate(st.startdate)} <br/>
+                            {setDate(st.enddate)}  <br/>
+                            {st.status} </p>
+                        <a href="#" className="btn btn-primary">Edit</a>&nbsp;
+                        {/* <EditStrategicTerm mis={st}/> */}
+                        <button onClick={() => deleteStrategicTerms(st.strategylist_id)} className="btn btn-danger">Delete</button>
+                    </div>
                 </div>
             ))}
             <br/>

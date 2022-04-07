@@ -59,8 +59,13 @@ INSERT INTO kanbanCard VALUES (2,'build CRUD','High','12-07-2008','Nimal','Compl
 INSERT INTO kanbanCard VALUES (3,'PERN Application','Medium','12-07-2008','Nimal','Build application',3,3,'pending');
 INSERT INTO kanbanCard VALUES (4,'Kanban Board','Low','12-07-2008','Binuka','Create Application',4,1,'approved');Nimi Grow
 INSERT INTO kanbanCard VALUES (5,'Kanban Board','Low','12-07-2008','Binuka','Create Application',4,3,'pending');
-
 INSERT INTO kanbanCard VALUES (6,'card','medium','01-04-2022','kamal','test kanban card',1,7,'pending');
+INSERT INTO kanbanCard VALUES (12,'kk','medium','01-04-2022','kamal','test kanban card',1,2,'pending');
+INSERT INTO kanbanCard VALUES (13,'test the app','low','01-04-2022','namal','testing',2,1,'approved');
+
+UPDATE kanbanCard
+SET priority = 'High'
+WHERE kanbanCard_id = 1;
 
 ALTER TABLE kanbanCard
 ADD statuskc VARCHAR(255);

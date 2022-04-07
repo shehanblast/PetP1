@@ -18,7 +18,7 @@ const Navbar = () => {
                     </ul>
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/kanbanBoard">Goals</a>
+                            <a className="nav-link active" aria-current="page" href="/kanban">Goals</a>
                         </li>
                     </ul>
                 </div>

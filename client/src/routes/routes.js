@@ -17,7 +17,7 @@ function Roots () {
                     <Route path="/about" element={<About/>} />
                     <Route path="/strageticTerm" element={<AddStrategicTerm />} />
                     <Route path="/EditStrageticCard/:id" element={<EditStrategicCard />} />
-                    <Route path="/strageticCard" element={<AddStrategicCard />} />
+                    <Route path="/strageticCard/:sTheme/:qt" element={<AddStrategicCard />} />
                     <Route path="/kanbanBoard" element={<KanbanBoard />} />
                     <Route path="/kanban" element={<Kanban />} />
                     <Route path="/" element={<About/>} />

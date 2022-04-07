@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 
+
 //-------------------------------Strategy API Start-----------------------------------------//
 
 //get all Strategy
@@ -305,7 +306,22 @@ app.get("/kanbanCard/strategicTheme/:name/:qt", async (req, res) => {
 
 });
 
-//delete a kanbanCards
+//get all kanbanCards
+app.get("/kanbanCard", async (req, res) => {
+
+    try {
+
+        const allStrategyList = await pool.query(
+            "SELECT *  from kanbanCard "
+        );
+        res.json(allStrategyList.rows);
+    } catch (err) {
+        console.log(err.message);
+    }
+
+});
+
+//delete a kanbanCard
 app.delete("/kanbanCard/:id", async (req, res) => {
     try {
 
@@ -323,7 +339,7 @@ app.delete("/kanbanCard/:id", async (req, res) => {
 });
 
 
-//get a kanbanCards
+//get a kanbanCards according to the Strategic theme ID
 app.get("/kanbanCard/:id", async (req, res) => {
 
     try {
@@ -340,8 +356,25 @@ app.get("/kanbanCard/:id", async (req, res) => {
 
 });
 
+//get a kanbanCards according to the ID
+app.get("/kanbanCard/card/:id", async (req, res) => {
 
-// create kanbanCard
+    try {
+
+        const {id} = req.params;
+
+        const kanbanCard = await pool.query(
+            "SELECT *  FROM kanbanCard k where kanbanCard_id = $1", [id]
+        );
+        res.json(kanbanCard.rows);
+    } catch (err) {
+        console.log(err.message);
+    }
+
+});
+
+
+// create new kanbanCard
 app.post("/kanbanCard", async (req, res) => {
 
     try {
@@ -361,7 +394,7 @@ app.post("/kanbanCard", async (req, res) => {
 })
 
 
-// create kanbanCard
+// Update kanbanCard
 app.put("/kanbanCard/:id", async (req, res) => {
 
     try {
@@ -380,6 +413,27 @@ app.put("/kanbanCard/:id", async (req, res) => {
     }
 
 })
+
+// Update the kanbanCard's quater
+app.patch("/kanbanCard/:id", async (req, res) => {
+
+    try {
+
+        const {id} = req.params;
+        const {qt} = req.body;
+
+        const editKanbanCard = await pool.query(
+            "UPDATE kanbanCard SET qt = $1 WHERE kanbanCard_id = $2",
+            [qt,id]
+        );
+
+        res.json("Card updated");
+    } catch (err) {
+        console.log(err.message);
+    }
+
+})
+
 
 //-------------------------------kanbanCard API End-----------------------------------------//
 

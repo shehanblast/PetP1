@@ -14,8 +14,6 @@ const StrategicCard = ({name}) => {
     const getStrategicCard = async () => {
         try{
 
-            var  x = 'GPA';
-
             const response = await fetch(`http://localhost:5000/kanbanCard/strategicTheme/${name}`);
             const jsonData = await response.json();
 
@@ -30,7 +28,6 @@ const StrategicCard = ({name}) => {
     const deleteStrategicCard = async (id) => {
 
         console.log(id);
-
         try {
 
             const deleteTo = await fetch(`http://localhost:5000/kanbanCard/${id}`,
@@ -52,14 +49,9 @@ const StrategicCard = ({name}) => {
         window.location = `/EditStrageticCard/${id}`;
     }
 
-    //
-    // var rebels = strategicCard.filter(function (st) {
-    //     return st.qt === 2;
-    // });
 
     return(
         <div>
-
             <section id="kb2">
                <div className="container">
                    <div className="row">

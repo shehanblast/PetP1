@@ -13,7 +13,7 @@ const AddStrategicTerm = () => {
             timer: 3000
         });
     }
-    
+
     //submission status alerts
     const SubmissionFail = () => {
         swat.fire({
@@ -39,14 +39,14 @@ const AddStrategicTerm = () => {
 
         try{
 
-            const body = 
-            {
-                "name": name,
-                "description": description,
-                "startDate":startDate,
-                "endDate":endDate,
-                "status":status
-            };
+            const body =
+                {
+                    "name": name,
+                    "description": description,
+                    "startDate":startDate,
+                    "endDate":endDate,
+                    "status":status
+                };
             //header - type of data
             //body - what is sending
             const response = await fetch('http://localhost:5000/strategyList',

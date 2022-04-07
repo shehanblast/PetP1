@@ -10,6 +10,7 @@ const Card = (props) => {
         setTimeout(() => {
             target.style.display = "none";
         },0);
+
     }
 
     const dragOver = e => {

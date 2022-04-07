@@ -17,12 +17,12 @@ const EditVision = ({vis}) => {
 
         try{
 
-            const body = 
-            {
-                "description": description,
-                "startDate":"2022-01-01",
-                "endDate":endDate,
-            };
+            const body =
+                {
+                    "description": description,
+                    "startDate":"2022-01-01",
+                    "endDate":endDate,
+                };
             //header - type of data
             //body - what is sending
             const response = await fetch(`http://localhost:5000/vision/${vis.vision_id}`,
@@ -32,7 +32,7 @@ const EditVision = ({vis}) => {
                     body: JSON.stringify(body)
                 });
             console.log(response);
-    
+
             window.location = "/";
 
         }catch (err){
@@ -43,10 +43,10 @@ const EditVision = ({vis}) => {
     return(
         <div>
             <
-                button type="button" 
-                className="btn btn-warning" 
-                data-bs-toggle="modal" 
-                data-bs-target={`#id${vis.vision_id}`}
+                button type="button"
+                       className="btn btn-warning"
+                       data-bs-toggle="modal"
+                       data-bs-target={`#id${vis.vision_id}`}
             >
                 Edit
             </button>
@@ -58,43 +58,43 @@ const EditVision = ({vis}) => {
                         <div className="modal-header">
                             <h4 className="modal-title">Edit Vision</h4>
                             <
-                                button type="button" 
-                                className="btn-close" 
-                                data-bs-dismiss="modal" 
+                                button type="button"
+                                       className="btn-close"
+                                       data-bs-dismiss="modal"
                             ></button>
                         </div>
 
                         <div className="modal-body">
                             <label htmlFor="exampleFormControlInput1" className="form-label">Vision</label>
                             <
-                                input type="text" 
-                                className="form-control" 
-                                value={description} 
-                                onChange={e => setDescription(e.target.value) }/>
+                                input type="text"
+                                      className="form-control"
+                                      value={description}
+                                      onChange={e => setDescription(e.target.value) }/>
                         </div>
 
                         <div className="modal-body">
                             <label htmlFor="exampleFormControlInput1" className="form-label">Due Date</label>
                             <
-                                input type="date" 
-                                className="form-control" 
-                                value={endDate} 
-                                onChange={e => setEndDate(e.target.value) }/>
+                                input type="date"
+                                      className="form-control"
+                                      value={endDate}
+                                      onChange={e => setEndDate(e.target.value) }/>
                         </div>
 
                         <div className="modal-footer">
                             <
-                                button type="button" 
-                                className="btn btn-warning" 
-                                data-bs-dismiss="modal" 
-                                onClick={ e => updateVision(e)}
+                                button type="button"
+                                       className="btn btn-warning"
+                                       data-bs-dismiss="modal"
+                                       onClick={ e => updateVision(e)}
                             >
                                 Edit</button>
                             <
-                                button type="button" 
-                                className="btn btn-danger" 
-                                data-bs-dismiss="modal" 
-                                onClick={() => changeBack()} 
+                                button type="button"
+                                       className="btn btn-danger"
+                                       data-bs-dismiss="modal"
+                                       onClick={() => changeBack()}
                             >
                                 Close
                             </button>
@@ -102,7 +102,7 @@ const EditVision = ({vis}) => {
 
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     )
 

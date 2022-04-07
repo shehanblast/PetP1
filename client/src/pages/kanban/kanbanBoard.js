@@ -41,29 +41,6 @@ const KanbanBoard = () => {
 
             <br/>
 
-            {/*<section id="kb2">*/}
-            {/*    <div className="container">*/}
-            {/*        <div className="row">*/}
-            {/*            <div className="col-md-12">*/}
-            {/*                <div className="card">*/}
-            {/*                    <div className="card-body">*/}
-            {/*                       Stragetic Term 1*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</section>*/}
-
-            {/*<section id="kb2">*/}
-            {/*    <div className="container">*/}
-            {/*        <div className="row">*/}
-            {/*            <div className="col-md-3">*/}
-            {/*                <StrategicCard/>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</section>*/}
 
             {strategicName.map(stN => (
                 <StrategicCard name={stN.name}/>
