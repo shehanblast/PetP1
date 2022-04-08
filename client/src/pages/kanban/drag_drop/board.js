@@ -2,6 +2,8 @@ import React,{Fragment, useState,useEffect} from 'react';
 
 const Board = (props) => {
 
+    const [kanbanID,setKanbanID] = useState('');
+
     const q1 = 1;
     const q2 = 2;
     const q3 = 3;
@@ -14,6 +16,7 @@ const Board = (props) => {
 
         const bID = props.id;
 
+        const kID = props.sTheme;
         console.log(props.sTheme);
 
         const card = document.getElementById(card_id);
@@ -22,25 +25,25 @@ const Board = (props) => {
         e.target.appendChild(card);
 
         if("board-2" == bID){
-            changeQT(q2);
+            changeQT(q2,kID);
            
         }
         else if("board-3" == bID){
-            changeQT(q3);
+            changeQT(q3,kID);
         }
         else if("board-4" == bID){
-            changeQT(q4);
+            changeQT(q4,kID);
         }
         else if("board-1" == bID){
-            changeQT(q1);
+            changeQT(q1,kID);
         }
 
         
     }
 
-    const changeQT = async (qt) => {
+    const changeQT = async (qt,kID) => {
 
-        console.log(qt);
+        console.log(qt,kID);
 
         try{
 
@@ -50,7 +53,7 @@ const Board = (props) => {
             };
             //header - type of data
             //body - what is sending
-            const response = await fetch(`http://localhost:5000/kanbanCard/2`,
+            const response = await fetch(`http://localhost:5000/kanbanCard/${kID}`,
                 {
                     method: "PATCH",
                     headers: {"Content-Type": "application/json"},

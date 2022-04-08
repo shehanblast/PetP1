@@ -41,6 +41,21 @@ const Kanban = () => {
       }
   }
 
+    const getStrategicCard = async (id) => {
+
+        try{
+
+            const response = await fetch(`http://localhost:5000/kanbanCard/${id}`);
+            const jsonData = await response.json();
+
+            setStrategicCard(jsonData);
+            console.log("lol" + strategicName);
+
+        }catch(err){
+            console.log(err.message);
+        }
+    }
+
 const NavigateToAdd = (sTheme,qt) => {
   window.location = `/strageticCard/${sTheme}/${qt}`;
 }
@@ -62,13 +77,14 @@ const NavigateToAdd = (sTheme,qt) => {
             {strategicName.map((stN,index) => (
               <div class="card">
                 <div class="card-body">
-                  {stN.name}
+                  {stN.strategyList_id}
                   <div className="flexbox" id={index}>
-                    {/* {getStrategicCard(stN.name)} */}
-                    <Board id="board-1" className="board" sTheme={stN.name}>
+                     {getStrategicCard(stN.name)}
+                      {strategicCard.map((stC,index) => (
+                    <Board id="board-1" className="board" sTheme={stC.kanbanCard_id}>
                       <div class="card k">
                         <div class="card-body">
-                          {stN.name} 
+                          {stN.name}
                         </div>
                       </div>
                       <h5>Quater - 01</h5>
@@ -77,6 +93,7 @@ const NavigateToAdd = (sTheme,qt) => {
                       </Card>
                       <button className="btn btn-primary" onClick={() => NavigateToAdd(stN.strategylist_id,q1)}>Add New</button>
                     </Board>
+
                     <Board id="board-2" className="board" sTheme={stN.name}>
                       <div class="card k">
                         <div class="card-body">
@@ -89,6 +106,7 @@ const NavigateToAdd = (sTheme,qt) => {
                         </Card>
                         <button className="btn btn-primary" onClick={() => NavigateToAdd(stN.strategylist_id,q2)}>Add New</button>
                     </Board>
+
                     <Board id="board-3" className="board" sTheme={stN.name}>
                       <div class="card k">
                         <div class="card-body">
@@ -101,6 +119,7 @@ const NavigateToAdd = (sTheme,qt) => {
                         </Card>
                         <button className="btn btn-primary" onClick={() => NavigateToAdd(stN.strategylist_id,q3)}>Add New</button>
                     </Board>
+
                     <Board id="board-4" className="board" sTheme={stN.name}>
                       <div class="card k">
                         <div class="card-body">
@@ -113,6 +132,7 @@ const NavigateToAdd = (sTheme,qt) => {
                         </Card>
                         <button className="btn btn-primary" onClick={() => NavigateToAdd(stN.strategylist_id,q4)}>Add New</button>
                     </Board>
+                          ))}
                   </div>
               </div>
             </div>
